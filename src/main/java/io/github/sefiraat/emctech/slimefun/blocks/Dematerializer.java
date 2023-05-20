@@ -1,5 +1,13 @@
 package io.github.sefiraat.emctech.slimefun.blocks;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
 import io.github.sefiraat.emctech.emc.EmcStorage;
 import io.github.sefiraat.emctech.slimefun.types.OwnedBlockMenuPreset;
 import io.github.sefiraat.emctech.slimefun.types.OwnedVariableTickRateItem;
@@ -19,13 +27,6 @@ import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
 import net.guizhanss.guizhanlib.minecraft.helper.inventory.ItemStackHelper;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 public class Dematerializer extends OwnedVariableTickRateItem implements EnergyNetComponent {
 

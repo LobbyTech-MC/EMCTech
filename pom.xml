@@ -143,7 +143,7 @@
         <dependency>
             <groupId>com.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>b8f7dc</version>
+            <version>RC-33</version>
             <scope>provided</scope>
         </dependency>
 
@@ -209,7 +209,7 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLib</artifactId>
-            <version>0.9.9</version>
+            <version>1.2.1</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -217,6 +217,16 @@
             <artifactId>placeholderapi</artifactId>
             <version>2.11.1</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+        	<groupId>net.guizhanss</groupId>
+        	<artifactId>GuizhanLib-updater</artifactId>
+        	<version>1.2.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>net.guizhanss</groupId>
+        	<artifactId>GuizhanLib-minecraft</artifactId>
+        	<version>1.2.1</version>
         </dependency>
     </dependencies>
 
