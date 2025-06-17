@@ -23,6 +23,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
@@ -181,10 +182,12 @@ public class Dematerializer extends OwnedVariableTickRateItem implements EnergyN
                             int requiredPower,
                             int currentPower
     ) {
-        blockMenu.replaceExistingItem(
-            INFO_SLOT,
-            GuiElements.getWorkingOnIcon(name, emcValue, requiredPower, currentPower)
-        );
+        if (blockMenu.hasViewer()) {
+            blockMenu.replaceExistingItem(
+                INFO_SLOT,
+                GuiElements.getWorkingOnIcon(name, emcValue, requiredPower, currentPower)
+            );
+        }
     }
 
     private void reject(@Nonnull BlockMenu blockMenu, @Nonnull ItemStack itemStack) {

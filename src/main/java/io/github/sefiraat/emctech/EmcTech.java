@@ -2,6 +2,7 @@ package io.github.sefiraat.emctech;
 
 
 import java.text.MessageFormat;
+import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -10,7 +11,6 @@ import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import co.aikar.commands.PaperCommandManager;
 import io.github.sefiraat.emctech.commands.EmcTechMain;
 import io.github.sefiraat.emctech.emc.EmcCalculator;
 import io.github.sefiraat.emctech.managers.ConfigManager;
@@ -19,7 +19,10 @@ import io.github.sefiraat.emctech.managers.RunnableManager;
 import io.github.sefiraat.emctech.managers.SupportedPluginManager;
 import io.github.sefiraat.emctech.slimefun.items.EmcItems;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-import net.guizhanss.guizhanlib.updater.GuizhanBuildsUpdater;
+
+import co.aikar.commands.PaperCommandManager;
+
+import net.guizhanss.guizhanlibplugin.updater.GuizhanUpdater;
 
 public class EmcTech extends JavaPlugin implements SlimefunAddon {
     private static EmcTech instance;
@@ -44,10 +47,17 @@ public class EmcTech extends JavaPlugin implements SlimefunAddon {
     public void onEnable() {
         instance = this;
 
-        getLogger().info("##########################################");
-        getLogger().info("     EMCTech              EMC科技          ");
-        getLogger().info(" 作者: Sefiraat 汉化: SlimefunGuguProject   ");
-        getLogger().info("##########################################");
+        if (!getServer().getPluginManager().isPluginEnabled("GuizhanLibPlugin")) {
+            getLogger().log(Level.SEVERE, "本插件需要 鬼斩前置库插件(GuizhanLibPlugin) 才能运行!");
+            getLogger().log(Level.SEVERE, "从此处下载: https://50L.cc/gzlib");
+            getServer().getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        getLogger().info("########################################");
+        getLogger().info("           EMCTech by Sefiraat          ");
+        getLogger().info("     EMC科技 汉化：SlimefunGuguProject    ");
+        getLogger().info("########################################");
 
         saveDefaultConfig();
         tryUpdate();
@@ -73,7 +83,7 @@ public class EmcTech extends JavaPlugin implements SlimefunAddon {
         if (getConfig().getBoolean("auto-update")
             && getDescription().getVersion().startsWith("Build")
         ) {
-            new GuizhanBuildsUpdater(this, getFile(), this.username, this.repo, this.branch, false, "zh-CN").start();
+            GuizhanUpdater.start(this, getFile(), this.username, this.repo, this.branch);
         }
     }
 
