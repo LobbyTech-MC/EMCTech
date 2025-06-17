@@ -28,7 +28,7 @@ public abstract class OwnedBlockMenuPreset extends BlockMenuPreset {
                                    boolean universal,
                                    @Nonnull OwnedVariableTickRateItem ownedVariableTickRateItem
     ) {
-        super(id, title, universal);
+        super(id, title);
         this.ownedVariableTickRateItem = ownedVariableTickRateItem;
     }
 
